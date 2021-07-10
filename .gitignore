@@ -4,4 +4,4 @@ output/*
 __pycache__*
 data/*
 raw/*
-colab/*
+colab/
