@@ -4,6 +4,7 @@ from __future__ import print_function
 from __future__ import division
 
 from tensor2tensor.data_generators import translate_envi
+from tensor2tensor.data_generators import translate
 from tensor2tensor.utils import registry
 
 
@@ -57,6 +58,22 @@ _MULTICCMIN20LOWBLEU_CLASS11_ENVI_TRAIN_DATASETS = [
     ['', ('youtube.fixed.en.fixed', 'youtube.fixed.vi.fixed')],
     ['', ('youtube.teded.en.fixed.filter.fixed', 'youtube.teded.vi.fixed.filter.fixed')],
   ]
+
+_VIETNAMESE_SUMMARIZATION_DATASETS = [['', (("train.in", "train.out"))]]
+_SUMMMARIZE_TEST_DATASETS = [[
+    # "https://github.com/stefan-it/nmt-en-vi/raw/master/data/dev-2012-en-vi.tgz",  # pylint: disable=line-too-long
+    "",
+    ("test.in", "test.out")
+]]
+@registry.register_problem
+class VietnameseSummarization(translate.TranslateProblem)
+  @property
+  def approx_vocab_size(self):
+    return 2**15  # 32768
+
+  def source_data_files(self, dataset_split):
+    train = dataset_split == problem.DatasetSplit.TRAIN
+    return _VIETNAMESE_SUMMARIZATION_DATASETS if train else _SUMMMARIZE_TEST_DATASETS
 
 @registry.register_problem
 class Multiccmin20lowbleuClass11TranslateEnviIwslt32k(translate_envi.TranslateEnviIwslt32k):
