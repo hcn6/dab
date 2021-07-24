@@ -66,7 +66,7 @@ _SUMMMARIZE_TEST_DATASETS = [[
     ("test.in", "test.out")
 ]]
 @registry.register_problem
-class VietnameseSummarization(translate.TranslateProblem)
+class VietnameseSummarization(translate.TranslateProblem):
   @property
   def approx_vocab_size(self):
     return 2**15  # 32768
