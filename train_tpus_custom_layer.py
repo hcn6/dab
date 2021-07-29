@@ -15,7 +15,7 @@ from google.colab import auth
 auth.authenticate_user()
 print('authenticated')
 
-TPU_ADDRESS = '34.134.112.85'
+TPU_ADDRESS = '10.104.150.114'
 
 task = 'envi'
 total_train_steps = 500000
