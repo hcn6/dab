@@ -40,6 +40,6 @@ problem = 'translate_class11_pure_vien_iwslt32k'
 model = 'transformer'
 decode_hparams = "beam_size=1"
 
-string = f"!python3 t2t_decoder.py --data_dir={train_data_dir} --problem={problem} --hparams_set={hparams_set} --model={model} --decode_hparams={decode_hparams}  --decode_from_file={decode_from_file} --decode_to_file={decode_to_file} --output_dir={train_output_dir} --use_tpu={use_tpu} --cloud_tpu_name=grpc://{TPU_ADDRESS}:8470"
+string = f"python3 t2t_decoder.py --data_dir={train_data_dir} --problem={problem} --hparams_set={hparams_set} --model={model} --decode_hparams={decode_hparams}  --decode_from_file={decode_from_file} --decode_to_file={decode_to_file} --output_dir={train_output_dir} --use_tpu={use_tpu} --cloud_tpu_name=grpc://{TPU_ADDRESS}:8470"
 # string = f"python3 t2t_trainer.py --cloud_tpu_name=grpc://{TPU_ADDRESS}:8470 --model={model} --hparams_set={hparams_set} --hparams={hparams_str} --train_steps={total_train_steps} --eval_steps=20 --problem={problem} --data_dir={train_data_dir} --output_dir={train_output_dir} --use_tpu={use_tpu}"
 os.system(string)
