@@ -17,6 +17,7 @@ FLAGS = flags.FLAGS
 @registry.register_hparams
 def transformer_tall9():
   hparams = transformer.transformer_big()
+  hparams.ffn = "gru"
   hparams.hidden_size = 768
   hparams.filter_size = 3072
   hparams.num_hidden_layers = 9
